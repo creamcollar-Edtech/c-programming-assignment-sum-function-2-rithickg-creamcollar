@@ -1,0 +1,21 @@
+name: Compile and Run C Program
+
+on: [push, pull_request]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install GCC and Make
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+
+    - name: Compile the Program
+      run: make
+
+    - name: Run the Program
+      run: |
+        echo "3 5" | ./program
